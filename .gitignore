@@ -1,0 +1,6 @@
+.edge_debug_profile/
+.cache/
+__pycache__/
+*.pyc
+.env
+scratch/

@@ -1,0 +1,92 @@
+[
+  {
+    "id": 4,
+    "username": "admin",
+    "role": "admin",
+    "display_name": "Администратор",
+    "venue": "Маестро Скопје",
+    "venue_slug": "maestro-skopje",
+    "pin": "4444",
+    "password": null
+  },
+  {
+    "id": 5,
+    "username": "superadmin",
+    "role": "super_admin",
+    "display_name": "Super Admin",
+    "venue": "Сите (Super Admin)",
+    "venue_slug": null,
+    "pin": "1234",
+    "password": "Admin123!"
+  },
+  {
+    "id": 6,
+    "username": "admin_1792720472",
+    "role": "admin",
+    "display_name": "Админ (Ohrid Pearl)",
+    "venue": "Ohrid Pearl",
+    "venue_slug": "ohridpearl",
+    "pin": "1234",
+    "password": null
+  },
+  {
+    "id": 7,
+    "username": "Edera_admin360",
+    "role": "admin",
+    "display_name": "Админ (edera360)",
+    "venue": "edera360",
+    "venue_slug": "edera360",
+    "pin": "1234",
+    "password": null
+  },
+  {
+    "id": 14,
+    "username": "gogo",
+    "role": "super_admin",
+    "display_name": "Gogo Super Admin",
+    "venue": "Сите (Super Admin)",
+    "venue_slug": null,
+    "pin": "1235",
+    "password": "GogoPass2026!"
+  },
+  {
+    "id": 15,
+    "username": "kiko",
+    "role": "super_admin",
+    "display_name": "Kiko Super Admin",
+    "venue": "Сите (Super Admin)",
+    "venue_slug": null,
+    "pin": "1236",
+    "password": "KikoPass2026!"
+  },
+  {
+    "id": 16,
+    "username": "admin.edera",
+    "role": "admin",
+    "display_name": "Admin Edera",
+    "venue": "edera360",
+    "venue_slug": "edera360",
+    "pin": "1236",
+    "password": "EderaPass123!"
+  },
+  {
+    "id": 17,
+    "username": "admin.ohrid",
+    "role": "admin",
+    "display_name": "Admin Ohrid",
+    "venue": "Ohrid Pearl",
+    "venue_slug": "ohridpearl",
+    "pin": "1236",
+    "password": "OhridPass123!"
+  },
+  {
+    "id": 18,
+    "username": "admin.skopje",
+    "role": "admin",
+    "display_name": "Admin Skopje",
+    "venue": "Маестро Скопје",
+    "venue_slug": "maestro-skopje",
+    "pin": "4445",
+    "password": "SkopjePass123!"
+  }
+]

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="mk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Maestro" />
+    <title>Нарачки . Ресторан</title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+    <link rel="icon" type="image/svg+xml" href="/icons/icon-192.svg" />
+    <link rel="stylesheet" href="/styles.css?v=20261028g" />
+  </head>
+  <body>
+    <div id="offline-banner" class="offline-banner" hidden>Нема интернет врска - прикажана е последната зачувана состојба</div>
+    <div id="splash-screen" class="splash-screen" role="status" aria-live="polite" aria-label="Се вчитува Maestro SMARTRESTO POS">
+      <div class="splash-content">
+        <div class="splash-logo-card" aria-hidden="true">M</div>
+        <p class="splash-subtitle">Maestro SMARTRESTO POS</p>
+      </div>
+    </div>
+    <script>
+      // Immediate unconditional safety timer: dismiss the splash screen after
+      // 1500ms and, if the app still has not painted anything, show a branded
+      // recovery card instead of leaving the staff on a blank white screen.
+      setTimeout(function () {
+        var s = document.getElementById("splash-screen") || document.querySelector(".splash-screen") || document.querySelector(".splash-container");
+        if (s) {
+          s.style.display = "none";
+          s.classList.add("hidden");
+        }
+      }, 1500);
+      setTimeout(function () {
+        var appRoot = document.getElementById("app");
+        if (!appRoot || appRoot.innerHTML.trim()) return;
+        appRoot.innerHTML =
+          '<main class="login-page"><section class="login-card" style="text-align:center;max-width:440px">' +
+          '<div class="brand-mark" aria-hidden="true">M</div>' +
+          '<p class="eyebrow">MAESTRO SMARTRESTO POS</p>' +
+          '<h1>Апликацијата не може да се вчита</h1>' +
+          '<p class="muted">Проверете ја интернет врската и освежете ја страницата.</p>' +
+          '<button class="button button-primary button-wide" type="button" onclick="window.location.reload()">Освежи</button>' +
+          '</section></main>';
+      }, 1800);
+    </script>
+    <noscript>
+      <div style="padding:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F2F2F7;color:#1C1C1E;min-height:100vh">
+        <h1 style="font-size:22px">Потребен е JavaScript</h1>
+        <p>Овозможете JavaScript во прелистувачот за да ја користите апликацијата.</p>
+      </div>
+    </noscript>
+    <div id="app" aria-live="polite"></div>
+    <div id="toast-region" class="toast-region" aria-live="assertive" aria-atomic="true"></div>
+    <script src="/app.js?v=20261028g" defer></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          // When a freshly deployed service worker takes over a page that was
+          // opened with an older one, reload once so the new app shell is
+          // actually executed (otherwise staff keeps running stale code).
+          try { sessionStorage.removeItem("maestro-sw-reloaded"); } catch (_) {}
+          const hadController = Boolean(navigator.serviceWorker.controller);
+          navigator.serviceWorker.addEventListener("controllerchange", () => {
+            if (!hadController) return;
+            try {
+              if (sessionStorage.getItem("maestro-sw-reloaded")) return;
+              sessionStorage.setItem("maestro-sw-reloaded", "1");
+            } catch (_) {}
+            window.location.reload();
+          });
+          navigator.serviceWorker.register("/sw.js").catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
