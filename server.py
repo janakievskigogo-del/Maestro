@@ -11,7 +11,7 @@ from urllib.parse import parse_qs, urlparse
 from restaurant import RestaurantService, WorkflowError
 ROOT = Path(__file__).resolve().parent
 SESSION_COOKIE = "restaurant_session"
-def create_server(db_path="restaurant.sqlite3", host="127.0.0.1", port=8000):
+def create_server(db_path="restaurant.sqlite3", host=os.getenv("HOST", "0.0.0.0"), port=int(os.getenv("PORT", 8000))):
     try:
         service = RestaurantService(db_path)
     except Exception as error:
