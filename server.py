@@ -311,7 +311,7 @@ def main():
     port = int(os.environ.get("PORT", "8000"))
     db_path = os.environ.get("RESTAURANT_DB", str(ROOT / "restaurant.sqlite3"))
     try:
-        http_server = create_server(db_path=db_path, host=os.environ.get("HOST", "127.0.0.1"), port=port)
+        http_server = create_server(db_path=db_path, host=os.environ.get("HOST", "0.0.0.0"), port=port)
     except Exception as error:
         print(f"[startup] server failed to start: {error}", flush=True)
         raise SystemExit(1)
